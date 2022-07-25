@@ -22,8 +22,7 @@ function SignupPage(props) {
       navigate("/login");
     } catch (err) {
       if (err.response?.status === 400) {
-        setErrorMessage(err.response.data.errorMessage);
-        console.log(err.message);
+        setErrorMessage(err.response.data.message);
       }
     }
   };
