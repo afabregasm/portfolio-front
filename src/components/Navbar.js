@@ -1,32 +1,49 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";                       // <== IMPORT 
-import { AuthContext } from "./../context/auth.context";  // <== IMPORT
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
--
-      {isLoggedIn
-        ? (<>
-            <Link to="/projects">
-              <button>Projects</button>
+    <nav id="navbar">
+      <div id="left-buttons">
+        <Link to="/">
+          <button>Home</button>
+        </Link>
+        <Link to="/about">
+          <button>About</button>
+        </Link>
+      </div>
+      <div id="right-buttons">
+        {isLoggedIn ? (
+          user.isAdmin ? (
+            <>
+              <button>ISADMIN</button>
+              <button onClick={logOutUser}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/new-order">
+                <button>Make an order</button>
+              </Link>
+              <Link to="/profile">
+                <button>Profile</button>
+              </Link>
+              <button onClick={logOutUser}>Logout</button>
+            </>
+          )
+        ) : (
+          <>
+            <Link to="/signup">
+              <button>Make an order</button>
             </Link>
-            <button onClick={logOutUser}>Logout</button>
-            <span>{user.name}</span>
-          </>)
-        : 
-        (<>
-          <Link to="/signup"> <button>Signup</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
-        </>)
-      }
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }
