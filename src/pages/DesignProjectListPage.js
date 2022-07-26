@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllProjectsService } from "../services/project.services";
-import CodingProjectCard from "../components/CodingProjectCard";
+import DesignProjectCard from "../components/DesignProjectCard";
 
-function CodingProjectListPage() {
+function DesignProjectListPage() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getAllProjects = async () => {
     try {
-      const response = await getAllProjectsService("coding");
+      const response = await getAllProjectsService("design");
       setProjects(response.data);
       setLoading(false);
     } catch (err) {
@@ -23,16 +23,16 @@ function CodingProjectListPage() {
 
   return (
     <div className="ProjectListPage">
-      <Link to={"/design-projects"}>
-        <button>Proyectos de diseño</button>
+      <Link to={"/coding-projects"}>
+        <button>Proyectos de programación</button>
       </Link>
       {loading && <div>Loading...</div>}
       {!loading &&
         projects?.map((project) => (
-          <CodingProjectCard key={project._id} {...project} />
+          <DesignProjectCard key={project._id} {...project} />
         ))}
     </div>
   );
 }
 
-export default CodingProjectListPage;
+export default DesignProjectListPage;

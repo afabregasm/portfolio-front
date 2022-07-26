@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-function DesignProjectCard({ title, image, _id }) {
+function DesignProjectCard({ title, images, _id }) {
   return (
     <div className="DesignProjectCard">
       <Link to={`/design-projects/${_id}`}>
         <h3>{title}</h3>
-        <img src={image} alt={title} />
+        <img src={images[0]} alt={title} />
       </Link>
     </div>
   );

@@ -1,16 +1,21 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+
+import AnonRoute from "./components/AnonRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
+
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ResumePage from "./pages/ResumePage";
 import EditResumePage from "./pages/EditResumePage";
 import CodingProjectListPage from "./pages/CodingProjectListPage";
+import DesignProjectListPage from "./pages/DesignProjectListPage";
 import CodingProjectDetailsPage from "./pages/CodingProjectDetailsPage";
-
-import PrivateRoute from "./components/PrivateRoute";
-import AnonRoute from "./components/AnonRoute";
+import DesignProjectDetailsPage from "./pages/DesignProjectDetailsPage";
+import AllOrdersPage from "./pages/AllOrdersPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 function App() {
   return (
@@ -38,18 +43,24 @@ function App() {
           }
         />
         <Route exact path="/about" element={<ResumePage />} />
-        <PrivateRoute>
-          <Route exact path="/about/:id" element={<EditResumePage />} />
-        </PrivateRoute>
+        <Route
+          exact
+          path="/about/:id"
+          element={
+            <PrivateRoute>
+              <EditResumePage />
+            </PrivateRoute>
+          }
+        />
         <Route
           exact
           path="/coding-projects"
           element={<CodingProjectListPage />}
         />
         <Route
-        //   exact
-        //   path="/design-projects"
-        //   element={<DesignProjectListPage />}
+          exact
+          path="/design-projects"
+          element={<DesignProjectListPage />}
         />
         <Route
           exact
@@ -57,9 +68,27 @@ function App() {
           element={<CodingProjectDetailsPage />}
         />
         <Route
-        //   exact
-        //   path="/design-projects/:id"
-        //   element={<DesignProjectDetailsPage />}
+          exact
+          path="/design-projects/:id"
+          element={<DesignProjectDetailsPage />}
+        />
+        <Route
+          exact
+          path="/all-orders"
+          element={
+            <PrivateRoute>
+              <AllOrdersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <UserProfilePage />
+            </PrivateRoute>
+          }
         />
       </Routes>
     </div>

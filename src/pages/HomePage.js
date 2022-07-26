@@ -10,15 +10,15 @@ function HomePage() {
       <div id="container">
         <div id="left-div">
           <Link to="/coding-projects">
-            <img class="brain" src={leftBrain} alt="left-brain" />
+            <img className="brain" src={leftBrain} alt="left-brain" />
           </Link>
-          <img class="glass" src={leftGlass} alt="left-glass" />
+          <img className="glass" src={leftGlass} alt="left-glass" />
         </div>
         <div id="right-div">
           <Link to="/design-projects">
-            <img class="brain" src={rightBrain} alt="right-brain" />
+            <img className="brain" src={rightBrain} alt="right-brain" />
           </Link>
-          <img class="glass" src={rightGlass} alt="right-glass" />
+          <img className="glass" src={rightGlass} alt="right-glass" />
         </div>
       </div>
     </div>

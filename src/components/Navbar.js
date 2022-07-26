@@ -22,16 +22,10 @@ function Navbar() {
               <Link to="/all-orders">
                 <button>Revisar encargos</button>
               </Link>
-              <Link to="/new-project">
-                <button>Añadir proyecto</button>
-              </Link>
               <button onClick={logOutUser}>Cerrar sesión</button>
             </>
           ) : (
             <>
-              <Link to="/new-order">
-                <button>Hacer un encargo</button>
-              </Link>
               <Link to="/profile">
                 <button>Tus encargos</button>
               </Link>
