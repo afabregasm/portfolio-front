@@ -1,16 +1,27 @@
-import service from './service';
+import service from "./service";
 
-const URL = '/projects';
+const CODURL = "/coding-projects";
+const DESURL = "/design-projects";
 
-const getAllProjectsService = () => {
-	return service.get(`${URL}/`);
+const getAllProjectsService = (type = "coding") => {
+  if (type === "coding") return service.get(`${CODURL}/`);
+  else if (type === "design") return service.get(`${DESURL}/`);
+  else throw new Error("There was an error retrieving the projects.");
 };
-const getProjectDetailsService = (id) => {
-	return service.get(`${URL}/${id}`);
+const getProjectDetailsService = (id, type = "coding") => {
+  if (type === "coding") return service.get(`${CODURL}/${id}`);
+  else if (type === "design") return service.get(`${DESURL}/${id}`);
+  else throw new Error("There was an error retrieving the project.");
 };
 
-const addNewProjectService = (newProject) => {
-	return service.post(`${URL}/`, newProject);
+const addNewProjectService = (newProject, type = "coding") => {
+  if (type === "coding") return service.post(`${CODURL}/`, newProject);
+  else if (type === "design") return service.post(`${DESURL}/`, newProject);
+  else throw new Error("There was an error adding the project.");
 };
 
-export { getAllProjectsService, addNewProjectService, getProjectDetailsService };
+export {
+  getAllProjectsService,
+  addNewProjectService,
+  getProjectDetailsService,
+};

@@ -12,34 +12,39 @@ function Navbar() {
           <button>Home</button>
         </Link>
         <Link to="/about">
-          <button>About</button>
+          <button>Información</button>
         </Link>
       </div>
       <div id="right-buttons">
         {isLoggedIn ? (
           user.isAdmin ? (
             <>
-              <button>ISADMIN</button>
-              <button onClick={logOutUser}>Logout</button>
+              <Link to="/all-orders">
+                <button>Revisar encargos</button>
+              </Link>
+              <Link to="/new-project">
+                <button>Añadir proyecto</button>
+              </Link>
+              <button onClick={logOutUser}>Cerrar sesión</button>
             </>
           ) : (
             <>
               <Link to="/new-order">
-                <button>Make an order</button>
+                <button>Hacer un encargo</button>
               </Link>
               <Link to="/profile">
-                <button>Profile</button>
+                <button>Tus encargos</button>
               </Link>
-              <button onClick={logOutUser}>Logout</button>
+              <button onClick={logOutUser}>Cerrar sesión</button>
             </>
           )
         ) : (
           <>
             <Link to="/signup">
-              <button>Make an order</button>
+              <button>Hacer un encargo</button>
             </Link>
             <Link to="/login">
-              <button>Login</button>
+              <button>Iniciar sesión</button>
             </Link>
           </>
         )}

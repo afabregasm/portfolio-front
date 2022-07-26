@@ -50,7 +50,7 @@ textarea {
   border-bottom: 3px solid white;
 }
 
-.card {
+.CodingProjectCard {
   width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
@@ -60,13 +60,14 @@ textarea {
   border-radius: 4px;
 }
 
-.ProjectCard h3::after {
-  content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
-  margin-left: 5px;
+.CodingProjectCard img {
+  width: 350px;
+  height: auto;
 }
 
 .EditProjectPage,
-.AddProject,
+.AddCodingProject,
+.AddDesignProject,
 .AddTask,
 .SignupPage,
 .LoginPage {
@@ -96,7 +97,8 @@ textarea {
 
 .EditProjectPage form,
 .AddTask form,
-.AddProject form,
+.AddCodingProject form,
+.AddDesignProject form,
 .SignupPage form,
 .LoginPage form {
   display: flex;
@@ -105,7 +107,8 @@ textarea {
 }
 
 .AddTask button,
-.AddProject button {
+.AddCodingProject button,
+.AddDesignProject button {
   display: block;
 }
 
