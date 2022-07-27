@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -6,7 +7,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 function EditCodingProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const projectId = props.match.params.id;
+  const projectId = useParams();
 
   useEffect(() => {
     // Get the token from the localStorage
@@ -14,11 +15,15 @@ function EditCodingProjectPage(props) {
 
     // Send the token through the request "Authorization" Headers
     axios
-      .get(`${API_URL}/projects/${projectId}`, {
+      .get(`${API_URL}/all-orders/${projectId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         const oneProject = response.data;
+        console.log(
+          "🚀 ~ file: EditCodingProjectPage.js ~ line 23 ~ .then ~ oneProject",
+          response.data
+        );
         setTitle(oneProject.title);
         setDescription(oneProject.description);
       })

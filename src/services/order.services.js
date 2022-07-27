@@ -11,12 +11,12 @@ const getOrderDetailsService = (id) => {
   return service.get(`${MODURL}/${id}`);
 };
 
-const editOrderDetailsService = (id) => {
-  return service.put(`${MODURL}/${id}`);
+const editOrderDetailsService = (id, editedOrder) => {
+  return service.patch(`${MODURL}/${id}`, editedOrder);
 };
 
 const getUserOrdersService = () => {
-  return service.get(`${USERURL}/`);
+  return service.get(`${USERURL}`);
 };
 
 const addNewOrderService = (newOrder) => {

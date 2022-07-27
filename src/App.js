@@ -17,6 +17,7 @@ import DesignProjectDetailsPage from "./pages/DesignProjectDetailsPage";
 import AllOrdersPage from "./pages/AllOrdersPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import EditOrderPage from "./pages/EditOrderPage";
+// import EditCodingProjectPage from "./pages/EditCodingProjectPage";
 
 function App() {
   return (

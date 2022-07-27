@@ -1,88 +1,78 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
+import {
+  getOrderDetailsService,
+  editOrderDetailsService,
+} from "../services/order.services";
 
-const API_URL = process.env.REACT_APP_API_URL;
+function EditOrderPage() {
+  const [order, setOrder] = useState([]);
+  const [modComment, setModComment] = useState("");
+  const [status, setStatus] = useState("");
+  const { id } = useParams();
+  const orderId = id;
 
-function EditOrderPage(props) {
-  console.log(
-    "🚀 ~ file: EditOrderPage.js ~ line 10 ~ EditOrderPage ~ props",
-    props
-  );
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const orderId = props.match.params.id;
+  const getOrder = async () => {
+    localStorage.getItem("authToken");
+    try {
+      const response = await getOrderDetailsService(orderId);
+      setOrder(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const editOrder = async () => {
+    localStorage.getItem("authToken");
+    const editedOrder = {
+      modComment,
+      status,
+    };
+    try {
+      const response = await editOrderDetailsService(orderId, editedOrder);
+      setOrder(response.data);
+      setModComment("");
+      setStatus("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem("authToken");
-
-    // Send the token through the request "Authorization" Headers
-    axios
-      .get(`${API_URL}/all-orders/${orderId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        const oneProject = response.data;
-        setTitle(oneProject.title);
-        setDescription(oneProject.description);
-      })
-      .catch((error) => console.log(error));
-  }, [orderId]);
+    getOrder();
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { title, description };
-
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem("authToken");
-
-    // Send the token through the request "Authorization" Headers
-    axios
-      .put(`${API_URL}/projects/${orderId}`, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        props.history.push(`/projects/${orderId}`);
-      });
-  };
-
-  const deleteProject = () => {
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem("authToken");
-
-    // Send the token through the request "Authorization" Headers
-    axios
-      .delete(`${API_URL}/projects/${orderId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then(() => props.history.push("/projects"))
-      .catch((err) => console.log(err));
+    console.log(e.target);
+    editOrder();
   };
 
   return (
     <div className="EditOrderPage">
-      <h3>Edit the Project</h3>
-
+      <h3>Editar encargo</h3>
+      <p>{order.title}</p>
+      <p>{order.description}</p>
+      <p>{order.modComment}</p>
+      <p>{order.status}</p>
       <form onSubmit={handleFormSubmit}>
-        <label>Title:</label>
+        <label>Añadir comentario:</label>
         <input
           type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          name="modComment"
+          value={modComment}
+          onChange={(e) => setModComment(e.target.value)}
         />
 
-        <label>Description:</label>
+        <label>Estado:</label>
         <textarea
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          name="status"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
         />
 
-        <button type="submit">Update Project</button>
+        <button type="submit">Update Order</button>
       </form>
-
-      <button onClick={deleteProject}>Delete Project</button>
     </div>
   );
 }

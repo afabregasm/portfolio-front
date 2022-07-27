@@ -18,7 +18,7 @@ function AddCodingProject(props) {
       setDescription("");
       setUrl("");
       setImage("");
-      props.refreshProjects();
+      // props.refreshProjects();
     } catch (err) {
       console.log(err);
     }
