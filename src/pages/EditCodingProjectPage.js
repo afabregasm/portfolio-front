@@ -3,69 +3,60 @@ import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function EditProjectPage(props) {
+function EditCodingProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const projectId = props.match.params.id;
-  
-  
+
   useEffect(() => {
     // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');
-    
-    // Send the token through the request "Authorization" Headers 
+    const storedToken = localStorage.getItem("authToken");
+
+    // Send the token through the request "Authorization" Headers
     axios
-      .get(
-        `${API_URL}/projects/${projectId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }    
-      )
+      .get(`${API_URL}/projects/${projectId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
       })
       .catch((error) => console.log(error));
-    
   }, [projectId]);
-  
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const requestBody = { title, description };
-  
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');  
 
-    // Send the token through the request "Authorization" Headers   
+    // Get the token from the localStorage
+    const storedToken = localStorage.getItem("authToken");
+
+    // Send the token through the request "Authorization" Headers
     axios
-      .put(
-        `${API_URL}/projects/${projectId}`,
-        requestBody,
-        { headers: { Authorization: `Bearer ${storedToken}` } }              
-      )
+      .put(`${API_URL}/projects/${projectId}`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
-        props.history.push(`/projects/${projectId}`)
+        props.history.push(`/projects/${projectId}`);
       });
   };
-  
-  
+
   const deleteProject = () => {
     // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');      
-    
-    // Send the token through the request "Authorization" Headers   
+    const storedToken = localStorage.getItem("authToken");
+
+    // Send the token through the request "Authorization" Headers
     axios
-      .delete(
-        `${API_URL}/projects/${projectId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }           
-      )
+      .delete(`${API_URL}/projects/${projectId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => props.history.push("/projects"))
       .catch((err) => console.log(err));
-  };  
+  };
 
-  
   return (
-    <div className="EditProjectPage">
+    <div className="EditCodingProjectPage">
       <h3>Edit the Project</h3>
 
       <form onSubmit={handleFormSubmit}>
@@ -76,7 +67,7 @@ function EditProjectPage(props) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        
+
         <label>Description:</label>
         <textarea
           name="description"
@@ -92,4 +83,4 @@ function EditProjectPage(props) {
   );
 }
 
-export default EditProjectPage;
+export default EditCodingProjectPage;

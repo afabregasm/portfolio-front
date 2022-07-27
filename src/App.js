@@ -16,6 +16,7 @@ import CodingProjectDetailsPage from "./pages/CodingProjectDetailsPage";
 import DesignProjectDetailsPage from "./pages/DesignProjectDetailsPage";
 import AllOrdersPage from "./pages/AllOrdersPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import EditOrderPage from "./pages/EditOrderPage";
 
 function App() {
   return (
@@ -78,6 +79,15 @@ function App() {
           element={
             <PrivateRoute>
               <AllOrdersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/all-orders/:id"
+          element={
+            <PrivateRoute>
+              <EditOrderPage />
             </PrivateRoute>
           }
         />
