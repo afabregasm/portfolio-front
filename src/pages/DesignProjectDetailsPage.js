@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { getProjectDetailsService } from "../services/project.services";
 import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
+import EditDesignProject from "../components/EditDesignProject";
 
-function DesignProjectDetailsPage(props) {
+function DesignProjectDetailsPage() {
+  const { isLoggedIn, user } = useContext(AuthContext);
   const [project, setProject] = useState(null);
   const { id } = useParams();
 
@@ -26,6 +30,7 @@ function DesignProjectDetailsPage(props) {
       <Link to="/design-projects">
         <button>Volver</button>
       </Link>
+      {isLoggedIn ? user.isAdmin ? <EditDesignProject /> : <></> : <></>}
       {project && (
         <div>
           <h1>{project.title}</h1>

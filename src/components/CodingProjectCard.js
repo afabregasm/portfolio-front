@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 
 function CodingProjectCard({ title, image, _id }) {
   return (
-    <div className="CodingProjectCard">
+    <div className="ProjectCard">
       <Link to={`/coding-projects/${_id}`}>
-        <h3>{title}</h3>
         <img src={image} alt={title} />
       </Link>
     </div>

@@ -21,9 +21,10 @@ const addNewProjectService = (newProject, type = "coding") => {
   else throw new Error("There was an error adding the project.");
 };
 
-const editProjectService = (id, type = "coding") => {
-  if (type === "coding") return service.post(`${CODURL}/${id}`);
-  else if (type === "design") return service.post(`${DESURL}/${id}`);
+const editProjectService = (id, editedProject, type = "coding") => {
+  if (type === "coding") return service.put(`${CODURL}/${id}`, editedProject);
+  else if (type === "design")
+    return service.put(`${DESURL}/${id}`, editedProject);
   else throw new Error("There was an error editing the project.");
 };
 

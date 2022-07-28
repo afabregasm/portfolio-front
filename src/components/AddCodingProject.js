@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addNewProjectService } from "../services/project.services.js";
 
-function AddCodingProject(props) {
+function AddCodingProject() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
@@ -18,14 +18,13 @@ function AddCodingProject(props) {
       setDescription("");
       setUrl("");
       setImage("");
-      // props.refreshProjects();
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="AddCodingProject">
+    <div className="AddProject">
       <h3>Nuevo proyecto de programación</h3>
 
       <form onSubmit={handleSubmit}>
@@ -38,7 +37,7 @@ function AddCodingProject(props) {
         />
 
         <label>Descripción:</label>
-        <textarea
+        <input
           type="text"
           name="description"
           value={description}
@@ -46,7 +45,7 @@ function AddCodingProject(props) {
         />
 
         <label>URL:</label>
-        <textarea
+        <input
           type="text"
           name="url"
           value={url}
@@ -54,14 +53,14 @@ function AddCodingProject(props) {
         />
 
         <label>Imagen:</label>
-        <textarea
+        <input
           type="text"
           name="image"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
 
-        <button type="submit">Añadir</button>
+        <button type="submit">Añadir proyecto</button>
       </form>
     </div>
   );

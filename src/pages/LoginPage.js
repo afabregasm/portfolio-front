@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../context/auth.context";
 import { loginService } from "../services/auth.services";
 
-function LoginPage(props) {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -31,13 +31,13 @@ function LoginPage(props) {
 
   return (
     <div className="LoginPage">
-      <h1>Login</h1>
+      <h1>Iniciar sesión</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
+        <label>Correo electrónico:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
-        <label>Password:</label>
+        <label>Contraseña:</label>
         <input
           type="password"
           name="password"
@@ -45,12 +45,12 @@ function LoginPage(props) {
           onChange={handlePassword}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit">Entrar</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <p>Todavía no tienes cuenta?</p>
+      <Link to={"/signup"}>Regístrate</Link>
     </div>
   );
 }

@@ -17,6 +17,8 @@ function EditOrderPage() {
     try {
       const response = await getOrderDetailsService(orderId);
       setOrder(response.data);
+      setModComment(response.data.modComment);
+      setStatus(response.data.status);
     } catch (err) {
       console.log(err);
     }
@@ -31,8 +33,6 @@ function EditOrderPage() {
     try {
       const response = await editOrderDetailsService(orderId, editedOrder);
       setOrder(response.data);
-      setModComment("");
-      setStatus("");
     } catch (err) {
       console.log(err);
     }
@@ -40,40 +40,45 @@ function EditOrderPage() {
 
   useEffect(() => {
     getOrder();
+    // eslint-disable-next-line
   }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
     editOrder();
   };
 
   return (
-    <div className="EditOrderPage">
-      <h3>Editar encargo</h3>
-      <p>{order.title}</p>
-      <p>{order.description}</p>
-      <p>{order.modComment}</p>
-      <p>{order.status}</p>
-      <form onSubmit={handleFormSubmit}>
-        <label>Añadir comentario:</label>
-        <input
-          type="text"
-          name="modComment"
-          value={modComment}
-          onChange={(e) => setModComment(e.target.value)}
-        />
+    <>
+      <div className="EditOrderPage">
+        <h3>Editar encargo</h3>
 
-        <label>Estado:</label>
-        <textarea
-          name="status"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        />
+        <form onSubmit={handleFormSubmit}>
+          <label>Añadir comentario:</label>
+          <input
+            type="text"
+            name="modComment"
+            value={modComment}
+            onChange={(e) => setModComment(e.target.value)}
+          />
 
-        <button type="submit">Update Order</button>
-      </form>
-    </div>
+          <label>Estado:</label>
+          <input
+            name="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+
+          <button type="submit">Actualizar encargo</button>
+        </form>
+      </div>
+      <div className="OrderCard">
+        <p>Título: {order.title}</p>
+        <p>Descripción: {order.description}</p>
+        <p>Actualización: {order.modComment}</p>
+        <p>Estado: {order.status}</p>
+      </div>
+    </>
   );
 }
 

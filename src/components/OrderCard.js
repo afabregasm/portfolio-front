@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 
-function OrderCard({ title, description, _id }) {
+function OrderCard({ title, description, status, modComment, _id }) {
   const { isLoggedIn, user } = useContext(AuthContext);
 
   return (
@@ -13,12 +13,16 @@ function OrderCard({ title, description, _id }) {
             <Link to={`/all-orders/${_id}`}>
               <h3>{title}</h3>
             </Link>
-            <p>{description}</p>
+            <p>Descripción: {description}</p>
+            <p>Estado: {status}</p>
+            <p>Actualización: {modComment}</p>
           </>
         ) : (
           <>
             <h3>{title}</h3>
-            <p>{description}</p>
+            <p>Descripción: {description}</p>
+            <p>Estado: {status}</p>
+            <p>Actualización: {modComment}</p>
           </>
         )
       ) : (

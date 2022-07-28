@@ -34,7 +34,7 @@ function AddOrder(props) {
         />
 
         <label>Descripción:</label>
-        <textarea
+        <input
           type="text"
           name="description"
           value={description}

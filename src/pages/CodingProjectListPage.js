@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
 import { getAllProjectsService } from "../services/project.services";
 import CodingProjectCard from "../components/CodingProjectCard";
+import AddCodingProject from "../components/AddCodingProject";
 
 function CodingProjectListPage() {
+  const { isLoggedIn, user } = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,6 +30,7 @@ function CodingProjectListPage() {
       <Link to={"/design-projects"}>
         <button>Proyectos de diseño</button>
       </Link>
+      {isLoggedIn ? user.isAdmin ? <AddCodingProject /> : <></> : <></>}
       {loading && <div>Loading...</div>}
       {!loading &&
         projects?.map((project) => (

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function ResumePage() {
-  return <div>ResumePage</div>;
+function ResumePage() {
+  return <div></div>;
 }
+
+export default ResumePage;

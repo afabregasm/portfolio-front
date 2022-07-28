@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { addNewProjectService } from "../services/project.services.js";
 
-function AddDesignProject(props) {
+function AddDesignProject() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [images, setImages] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newProject = { title, description };
+    const newProject = { title, description, images };
 
-    // Send the token through the request "Authorization" Headers
     try {
-      await addNewProjectService(newProject, "coding");
+      await addNewProjectService(newProject, "design");
       setTitle("");
       setDescription("");
-      props.refreshProjects();
+      setImages([]);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="AddDesignProject">
-      <h3>Add Project</h3>
+    <div className="AddProject">
+      <h3>Nuevo proyecto de diseño</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
+        <label>Título:</label>
         <input
           type="text"
           name="title"
@@ -34,15 +34,23 @@ function AddDesignProject(props) {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <label>Description:</label>
-        <textarea
+        <label>Descripción:</label>
+        <input
           type="text"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button type="submit">Submit</button>
+        <label>Imágenes:</label>
+        <input
+          type="text"
+          name="images"
+          value={images}
+          onChange={(e) => setImages(e.target.value)}
+        />
+
+        <button type="submit">Añadir proyecto</button>
       </form>
     </div>
   );

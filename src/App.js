@@ -9,15 +9,13 @@ import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ResumePage from "./pages/ResumePage";
-import EditResumePage from "./pages/EditResumePage";
+import UserProfilePage from "./pages/UserProfilePage";
+import AllOrdersPage from "./pages/AllOrdersPage";
+import EditOrderPage from "./pages/EditOrderPage";
 import CodingProjectListPage from "./pages/CodingProjectListPage";
 import DesignProjectListPage from "./pages/DesignProjectListPage";
 import CodingProjectDetailsPage from "./pages/CodingProjectDetailsPage";
 import DesignProjectDetailsPage from "./pages/DesignProjectDetailsPage";
-import AllOrdersPage from "./pages/AllOrdersPage";
-import UserProfilePage from "./pages/UserProfilePage";
-import EditOrderPage from "./pages/EditOrderPage";
-// import EditCodingProjectPage from "./pages/EditCodingProjectPage";
 
 function App() {
   return (
@@ -45,15 +43,6 @@ function App() {
           }
         />
         <Route exact path="/about" element={<ResumePage />} />
-        <Route
-          exact
-          path="/about/:id"
-          element={
-            <PrivateRoute>
-              <EditResumePage />
-            </PrivateRoute>
-          }
-        />
         <Route
           exact
           path="/coding-projects"
