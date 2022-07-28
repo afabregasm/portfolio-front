@@ -30,7 +30,15 @@ function CodingProjectDetailsPage() {
       <Link to="/coding-projects">
         <button>Volver</button>
       </Link>
-      {isLoggedIn ? user.isAdmin ? <EditCodingProject /> : <></> : <></>}
+      {isLoggedIn ? (
+        user.isAdmin ? (
+          <EditCodingProject refreshProject={getProject} />
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
       {project && (
         <div>
           <h1>{project.title}</h1>

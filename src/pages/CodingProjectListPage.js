@@ -10,6 +10,7 @@ function CodingProjectListPage() {
   const { isLoggedIn, user } = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
 
   const getAllProjects = async () => {
     try {
@@ -30,7 +31,20 @@ function CodingProjectListPage() {
       <Link to={"/design-projects"}>
         <button>Proyectos de diseño</button>
       </Link>
-      {isLoggedIn ? user.isAdmin ? <AddCodingProject /> : <></> : <></>}
+      {isLoggedIn ? (
+        user.isAdmin ? (
+          <div className="toggle">
+            <button onClick={() => setShow(!show)}>
+              {show ? "Cerrar formulario" : "Nuevo proyecto"}
+            </button>
+            <AddCodingProject show={show} refreshProjects={getAllProjects} />
+          </div>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
       {loading && <div>Loading...</div>}
       {!loading &&
         projects?.map((project) => (

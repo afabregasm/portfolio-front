@@ -6,7 +6,8 @@ import {
   deleteProjectService,
 } from "../services/project.services";
 
-function EditDesignProject() {
+function EditDesignProject(props) {
+  // eslint-disable-next-line
   const [project, setProject] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -54,6 +55,7 @@ function EditDesignProject() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     editProject();
+    props.refreshProject();
   };
 
   const deleteProject = async () => {

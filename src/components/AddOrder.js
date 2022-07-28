@@ -21,29 +21,33 @@ function AddOrder(props) {
   };
 
   return (
-    <div className="AddOrder">
-      <h3>Nuevo encargo</h3>
+    <>
+      {props.show ? (
+        <div className="AddOrder">
+          <h3>Nuevo encargo</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label>Asunto:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+          <form onSubmit={handleSubmit}>
+            <label>Asunto:</label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
 
-        <label>Descripción:</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+            <label>Descripción:</label>
+            <input
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
 
-        <button type="submit">Hacer encargo</button>
-      </form>
-    </div>
+            <button type="submit">Hacer encargo</button>
+          </form>
+        </div>
+      ) : null}
+    </>
   );
 }
 
