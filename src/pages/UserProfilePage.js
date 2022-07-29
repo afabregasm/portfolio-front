@@ -25,7 +25,7 @@ function UserProfilePage() {
   return (
     <>
       <div className="toggle">
-        <button onClick={() => setShow(!show)}>
+        <button className="toggle-button" onClick={() => setShow(!show)}>
           {show ? "Cerrar formulario" : "Nuevo encargo"}
         </button>
         <AddOrder show={show} refreshOrders={getUserOrders} />

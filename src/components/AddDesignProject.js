@@ -26,8 +26,6 @@ function AddDesignProject(props) {
     <>
       {props.show ? (
         <div className="AddProject">
-          <h3>Nuevo proyecto de diseño</h3>
-
           <form onSubmit={handleSubmit}>
             <label>Título:</label>
             <input

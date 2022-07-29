@@ -32,7 +32,7 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Iniciar sesión</h1>
-
+      <br />
       <form onSubmit={handleLoginSubmit}>
         <label>Correo electrónico:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
@@ -44,12 +44,12 @@ function LoginPage() {
           value={password}
           onChange={handlePassword}
         />
-
+        <br />
         <button type="submit">Entrar</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Todavía no tienes cuenta?</p>
+      <br />
+      <p>¿Todavía no tienes cuenta?</p>
       <Link to={"/signup"}>Regístrate</Link>
     </div>
   );

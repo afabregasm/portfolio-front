@@ -27,14 +27,14 @@ function CodingProjectListPage() {
   }, []);
 
   return (
-    <div className="ProjectListPage">
+    <div className="CodingProjectList">
       <Link to={"/design-projects"}>
-        <button>Proyectos de diseño</button>
+        <button className="no-form-button">Proyectos de diseño</button>
       </Link>
       {isLoggedIn ? (
         user.isAdmin ? (
           <div className="toggle">
-            <button onClick={() => setShow(!show)}>
+            <button className="toggle-button" onClick={() => setShow(!show)}>
               {show ? "Cerrar formulario" : "Nuevo proyecto"}
             </button>
             <AddCodingProject show={show} refreshProjects={getAllProjects} />

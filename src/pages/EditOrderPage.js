@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   getOrderDetailsService,
   editOrderDetailsService,
@@ -50,6 +50,9 @@ function EditOrderPage() {
 
   return (
     <>
+      <Link to="/all-orders">
+        <button className="no-form-button">Volver</button>
+      </Link>
       <div className="EditOrderPage">
         <h3>Editar encargo</h3>
 

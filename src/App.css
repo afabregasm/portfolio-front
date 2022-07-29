@@ -39,14 +39,14 @@
 }
 
 #left-div img {
-  margin-top: 20px;
+  margin-top: 65px;
   position: absolute;
   left: 0px;
   transform: translateX(57.1%);
 }
 
 #right-div img {
-  margin-top: 20px;
+  margin-top: 65px;
   position: absolute;
   right: 0px;
   transform: translateX(-57.1%);

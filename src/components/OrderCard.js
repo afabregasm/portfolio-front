@@ -13,16 +13,16 @@ function OrderCard({ title, description, status, modComment, _id }) {
             <Link to={`/all-orders/${_id}`}>
               <h3>{title}</h3>
             </Link>
-            <p>Descripción: {description}</p>
-            <p>Estado: {status}</p>
-            <p>Actualización: {modComment}</p>
+            <h5>Descripción: {description}</h5>
+            <h5>Estado: {status}</h5>
+            <h5>Actualización: {modComment}</h5>
           </>
         ) : (
           <>
             <h3>{title}</h3>
-            <p>Descripción: {description}</p>
-            <p>Estado: {status}</p>
-            <p>Actualización: {modComment}</p>
+            <h5>Descripción: {description}</h5>
+            <h5>Estado: {status}</h5>
+            <h5>Actualización: {modComment}</h5>
           </>
         )
       ) : (

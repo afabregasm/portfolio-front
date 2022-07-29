@@ -28,8 +28,6 @@ function AddCodingProject(props) {
     <>
       {props.show ? (
         <div className="AddProject">
-          <h3>Nuevo proyecto de programación</h3>
-
           <form onSubmit={handleSubmit}>
             <label>Título:</label>
             <input

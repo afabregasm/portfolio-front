@@ -96,7 +96,9 @@ function EditDesignProject(props) {
         <button type="submit">Actualizar proyecto</button>
       </form>
 
-      <button onClick={deleteProject}>Borrar proyecto</button>
+      <button className="delete-button" onClick={deleteProject}>
+        Borrar proyecto
+      </button>
     </div>
   );
 }

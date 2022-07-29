@@ -19,6 +19,7 @@ function AllOrdersPage() {
   useEffect(() => {
     getAllOrders();
   }, []);
+
   return (
     <div className="OrderListPage">
       {loading && <div>Loading...</div>}

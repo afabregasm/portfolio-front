@@ -30,7 +30,7 @@ function SignupPage() {
   return (
     <div className="SignupPage">
       <h1>Crear cuenta</h1>
-
+      <br />
       <form onSubmit={handleSignupSubmit}>
         <label>Correo electrónico:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
@@ -50,13 +50,13 @@ function SignupPage() {
           value={username}
           onChange={handleName}
         />
-
+        <br />
         <button type="submit">Registrarse</button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Ya tienes una cuenta?</p>
+      <br />
+      <p>¿Ya tienes una cuenta?</p>
       <Link to={"/login"}>Inicia sesión</Link>
     </div>
   );

@@ -10,13 +10,60 @@ body {
 
 a {
   list-style: none;
+  text-decoration: none;
+}
+
+.error-message {
+  margin: 10px;
+  background-color: rgb(255, 85, 85);
+  border-radius: 5px;
+  padding: 20px 10px;
 }
 
 button,
 select {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #666;
+  border-radius: 5px;
   padding: 5px 10px;
   min-width: 50px;
   margin: 5px;
+  font-size: 18px;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 75px;
+  left: 10px;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 5px 10px;
+  min-width: 50px;
+  margin: 5px;
+  font-size: 18px;
+}
+
+.no-form-button {
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 5px 10px;
+  min-width: 50px;
+  margin: 5px;
+  font-size: 18px;
+}
+
+.delete-button {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 5px 10px;
+  min-width: 50px;
+  margin: 5px auto;
   font-size: 18px;
 }
 
@@ -26,7 +73,7 @@ label {
 }
 
 input {
-  width: 200px;
+  width: 400px;
   padding: 10px;
   display: inline-block;
   margin: 10px;
@@ -55,46 +102,111 @@ input {
   border-bottom: 3px solid white;
 }
 
-.ProjectCard,
-.OrderCard {
-  width: 400px;
+.SignupPage,
+.LoginPage {
+  background: rgb(245, 245, 245);
+  width: 500px;
+  text-align: center;
+  margin: 20px auto;
+  padding: 40px 20px;
+  border: 1px solid #666;
+  border-radius: 3px;
+}
+
+.AddOrder,
+.AddProject,
+.CodingProjectList,
+.DesignProjectList,
+.CodingProjectDetails,
+.DesignProjectDetails,
+.EditProjectPage,
+.EditOrderPage,
+.OrderListPage {
+  margin-top: 80px;
+}
+
+.OrderListPage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CodingProjectDetails,
+.DesignProjectDetails {
+  padding: 0px 350px;
+}
+
+.CodingProjectDetails img,
+.DesignProjectDetails img {
+  width: 1000px;
+  height: auto;
   padding: 10px;
+}
+
+.OrderCard {
+  background: rgb(245, 245, 245);
+  width: 500px;
+  text-align: center;
+  margin: 20px auto;
+  padding: 40px 20px;
+  border: 1px solid #666;
+  border-radius: 3px;
+}
+
+.CodingProjectCard {
+  width: 1500px;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
   margin-bottom: 20px;
-  background: #94a7c8;
-  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
 }
 
-.ProjectCard img {
-  width: 350px;
+.CodingProjectCard:hover {
+  transform: scale(1.05);
+}
+
+.CodingProjectCard img {
+  width: 1500px;
   height: auto;
 }
 
-.SignupPage,
-.LoginPage {
-  background-color: #608dd5;
+.DesignProjectList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0px 190px;
 }
 
-.EditProjectPage,
-.EditOrderPage,
-.AddProject,
-.SignupPage,
-.LoginPage {
-  background: #f9eec3;
-  border: 1px solid grey;
+.DesignProjectCard {
+  width: 650px;
   box-shadow: 0px 2px 3px grey;
-  width: 400px;
-  text-align: center;
   margin: 0 auto;
   margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
 }
 
+.DesignProjectCard:hover {
+  transform: scale(1.05);
+}
+
+.DesignProjectCard img {
+  width: 650px;
+  height: auto;
+}
+
+.AddProject,
+.AddOrder,
+.EditProjectPage,
+.EditOrderPage,
+.SignupPage,
+.LoginPage {
+  margin-bottom: 30px;
+}
+
+.AddProject form,
+.AddOrder form,
 .EditProjectPage form,
 .EditOrderPage form,
-.AddProject form,
 .SignupPage form,
 .LoginPage form {
   display: flex;
@@ -103,6 +215,10 @@ input {
 }
 
 .AddProject button,
-.AddProject button {
+.AddOrder button,
+.EditProjectPage button,
+.EditOrderPage button,
+.SignupPage button,
+.LoginPage button {
   display: block;
 }

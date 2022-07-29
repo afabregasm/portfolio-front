@@ -26,9 +26,9 @@ function DesignProjectDetailsPage() {
   }, []);
 
   return (
-    <div className="ProjectDetails">
+    <div className="DesignProjectDetails">
       <Link to="/design-projects">
-        <button>Volver</button>
+        <button className="no-form-button">Volver</button>
       </Link>
       {isLoggedIn ? (
         user.isAdmin ? (
