@@ -20,50 +20,35 @@
 }
 
 #container {
+  margin-top: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
   justify-content: center;
   width: 1100px;
-  height: 756px;
+  height: 565px;
 }
 
 #left-div {
   width: 550px;
-  height: 756px;
+  height: 565px;
+  background: url(../src/images/glasses0l.png) no-repeat;
+  transition: all 0.8s ease-in-out;
 }
 
 #right-div {
   width: 550px;
-  height: 756px;
-}
-
-#left-div img {
-  margin-top: 65px;
-  position: absolute;
-  left: 0px;
-  transform: translateX(57.1%);
-}
-
-#right-div img {
-  margin-top: 65px;
-  position: absolute;
-  right: 0px;
-  transform: translateX(-57.1%);
-}
-
-.glass {
-  z-index: 0;
-}
-
-.brain {
-  opacity: 0;
+  height: 565px;
+  background: url(../src/images/glasses0r.png) no-repeat;
   transition: all 0.8s ease-in-out;
-  z-index: 1;
 }
 
-.brain:hover {
-  opacity: 1;
+#left-div:hover {
+  background: url(../src/images/glasses1l.png) no-repeat;
+}
+
+#right-div:hover {
+  background: url(../src/images/glasses1r.png) no-repeat;
 }
 
 .CV h4 {
